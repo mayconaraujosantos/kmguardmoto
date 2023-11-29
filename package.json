@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "expo start --dev-client",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
+    "ci": "watchman watch-del-all && rm -rf node_modules && npm install",
+    "start": "watchman watch-del-all && APP_ENV=prod npx expo start -c",
+    "android": "APP_ENV=prod npx expo start --android",
+    "ios": "APP_ENV=prod npx expo start --ios",
+    "web": "APP_ENV=prod npx expo start --web",
+    "format": "node_modules/.bin/prettier --config .prettierrc src/**/*.{ts,tsx} --write",
+    "lint": "node_modules/.bin/eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "node_modules/.bin/jest --verbose --passWithNoTests",
+    "prepare": "husky install"
   },
   "dependencies": {
     "expo": "~49.0.15",
