@@ -2,6 +2,8 @@
 .vscode
 .vs
 
+# yarn package
+.yarn
 # OSX
 .DS_Store
 
